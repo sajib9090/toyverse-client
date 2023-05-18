@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import loginAnimation from "../../assets/login.json"
-import { FaGoogle, FaGithub } from 'react-icons/fa';
+import { FaGoogle } from 'react-icons/fa';
 import Lottie from 'lottie-react'
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
@@ -15,8 +15,8 @@ const Login = () => {
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    const user = {email, password};
-    console.log(user);
+
+    
   }
 
   const handleGoogleLogin = () => {
@@ -77,7 +77,6 @@ const Login = () => {
                 <h3 className="text-center pt-6">Or sign in with</h3>
                 <div className="flex justify-center space-x-6 py-6">
                     <FaGoogle onClick={handleGoogleLogin} className="w-6 h-6 cursor-pointer hover:scale-125 duration-500"></FaGoogle>
-                    <FaGithub className="w-6 h-6 cursor-pointer hover:scale-125 duration-500"></FaGithub>
                 </div>
                 <p className="text-center mb-4"><small>New to Toy-Verse? <Link className="text-[#EF7B84] font-semibold" to='/register'>Create Account</Link></small></p>
             </div>

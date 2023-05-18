@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import welcomeAnimation from "../../assets/welcome.json"
 import Lottie from 'lottie-react'
 import { Link } from "react-router-dom";
+import { AuthContext } from '../../providers/AuthProvider';
 
 const Register = () => {
+
+    const { registerUser } = useContext(AuthContext)
 
     const handleRegister = event => {
         event.preventDefault()
@@ -13,8 +16,16 @@ const Register = () => {
         const photo = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
-        const user = {name, photo, email, password};
-        console.log(user);
+
+        registerUser(email, password)
+        .then((userCredential) => {
+            const user = userCredential.user;
+            console.log(user);
+          })
+          .catch((error) => {
+            const errorMessage = error.message;
+            console.log(errorMessage);
+          });
       }
     return (
         <div>
