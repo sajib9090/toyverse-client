@@ -14,7 +14,13 @@ const Navbar = () => {
         </a>
         </Link>
         <div className="flex items-center">
-            <Link to='/login' className="text-sm  text-blue-600 dark:text-blue-500 hover:underline">Login</Link>
+        <NavLink to='/login' className={({ isActive }) =>
+                      isActive
+                        ? "text-[#EF7B84] dark:text-white hover:underline cursor-pointer text-base font-semibold"
+                        : "text-gray-900 dark:text-white hover:underline cursor-pointer text-base font-semibold"
+                    }>
+                Login
+                </NavLink>
         </div>
     </div>
 </nav>
