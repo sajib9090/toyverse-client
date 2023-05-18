@@ -21,7 +21,7 @@ const Navbar = () => {
 <nav className="bg-gray-50 dark:bg-gray-700">
     <div className="max-w-screen-xl px-4 py-3 mx-auto">
         <div className="flex items-center">
-            <ul className="flex flex-row font-medium mt-0 mr-6 space-x-8 text-sm">
+            <ul className="flex flex-row font-medium mt-0 mr-6 space-x-8 text-base">
                 <NavLink to='/' className={({ isActive }) =>
                       isActive
                         ? "text-[#EF7B84] dark:text-white hover:underline cursor-pointer"
