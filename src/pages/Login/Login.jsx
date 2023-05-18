@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import loginAnimation from "../../assets/login.json"
-import { FaGoogle, FaGithub, FaFacebook } from 'react-icons/fa';
+import { FaGoogle, FaGithub } from 'react-icons/fa';
 import Lottie from 'lottie-react'
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Login = () => {
+
+  const { googleLogin } = useContext(AuthContext)
 
   const handleLogin = event => {
     event.preventDefault()
@@ -14,6 +17,17 @@ const Login = () => {
     const password = form.password.value;
     const user = {email, password};
     console.log(user);
+  }
+
+  const handleGoogleLogin = () => {
+    googleLogin()
+    .then((result) => {
+      const user = result.user;
+      console.log(user);
+    }).catch((error) => {
+      const errorMessage = error.message;
+      console.log(errorMessage);
+    });
   }
   return (
     <div>
@@ -51,9 +65,9 @@ const Login = () => {
                   className="input input-bordered"
                 />
                 <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
+                  <p className="label-text-alt link link-hover text-red-700">
                     Forgot password?
-                  </a>
+                  </p>
                 </label>
               </div>
               <div className="form-control mt-6">
@@ -62,9 +76,8 @@ const Login = () => {
               <div>
                 <h3 className="text-center pt-6">Or sign in with</h3>
                 <div className="flex justify-center space-x-6 py-6">
-                    <FaGoogle className="w-6 h-6 cursor-pointer hover:scale-125 duration-500"></FaGoogle>
+                    <FaGoogle onClick={handleGoogleLogin} className="w-6 h-6 cursor-pointer hover:scale-125 duration-500"></FaGoogle>
                     <FaGithub className="w-6 h-6 cursor-pointer hover:scale-125 duration-500"></FaGithub>
-                    <FaFacebook className="w-6 h-6 cursor-pointer hover:scale-125 duration-500"></FaFacebook>
                 </div>
                 <p className="text-center mb-4"><small>New to Toy-Verse? <Link className="text-[#EF7B84] font-semibold" to='/register'>Create Account</Link></small></p>
             </div>
