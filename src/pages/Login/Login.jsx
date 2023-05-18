@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import loginAnimation from "../../assets/login.json"
 import { FaGoogle } from 'react-icons/fa';
 import Lottie from 'lottie-react'
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const Login = () => {
@@ -10,6 +10,11 @@ const Login = () => {
   const { googleLogin, loginWithEmail } = useContext(AuthContext)
   const [success, setSuccess] = useState('')
   const [error, setError] = useState('')
+
+  const location = useLocation()
+  const navigate = useNavigate()
+
+  const from = location.state?.from?.pathname || '/'
 
   const handleLogin = event => {
     event.preventDefault()
@@ -22,6 +27,7 @@ const Login = () => {
     .then((userCredential) => { 
       const user = userCredential.user;
       console.log(user);
+      navigate(from, { replace: true });
       form.reset();
       setError('')
       
@@ -39,6 +45,7 @@ const Login = () => {
     .then((result) => {
       const user = result.user;
       console.log(user);
+      navigate(from, { replace: true });
     }).catch((error) => {
       const errorMessage = error.message;
       console.log(errorMessage);

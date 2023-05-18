@@ -1,13 +1,16 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import welcomeAnimation from "../../assets/welcome.json"
 import Lottie from 'lottie-react'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from '../../providers/AuthProvider';
 import { updateProfile } from 'firebase/auth';
+import { Toaster, toast } from 'react-hot-toast';
 
 const Register = () => {
 
     const { registerUser } = useContext(AuthContext)
+    const navigate = useNavigate()
+    const [error, setError] = useState('')
 
     const handleRegister = event => {
         event.preventDefault()
@@ -21,14 +24,19 @@ const Register = () => {
         registerUser(email, password)
         .then((userCredential) => {
             const user = userCredential.user;
-            console.log(user);
+            console.log(user)
+            toast.success('Registration success')
             form.reset()
             updateUserProfile(user, name, photo)
+            setError('')
+            navigate('/login')
+
            
           })
           .catch((error) => {
             const errorMessage = error.message;
             console.log(errorMessage);
+            setError(errorMessage)
           });
       }
 
@@ -104,11 +112,11 @@ const Register = () => {
                   placeholder="Enter your password"
                   className="input input-bordered"
                 />
-                {/* <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
-                    Forgot password?
-                  </a>
-                </label> */}
+                <label className="label">
+                  <p className="label-text-alt text-red-600">
+                    {error}
+                  </p>
+                </label>
               </div>
               <div className="form-control mt-6">
                 <button className="bg-[#EF7B84] py-3 rounded-lg text-white hover:bg-slate-700 duration-500">Register</button>
@@ -119,6 +127,10 @@ const Register = () => {
             </div>
           </div>
         </div>
+        <Toaster
+  position="top-center"
+  reverseOrder={false}
+/>
       </div>
     );
 };
