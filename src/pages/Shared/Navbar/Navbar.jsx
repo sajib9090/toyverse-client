@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const Navbar = () => {
+    const {user, logOut} = useContext(AuthContext)
+
+    const handleLogOut = () => {
+        logOut()
+         .then()
+         .catch((error) => {
+            console.log(error);
+          })
+    }
   return (
     <div>
       
@@ -14,13 +24,21 @@ const Navbar = () => {
         </a>
         </Link>
         <div className="flex items-center">
-        <NavLink to='/login' className={({ isActive }) =>
-                      isActive
-                        ? "text-[#EF7B84] dark:text-white hover:underline cursor-pointer text-base font-semibold"
-                        : "text-gray-900 dark:text-white hover:underline cursor-pointer text-base font-semibold"
-                    }>
-                Login
-                </NavLink>
+        {
+            user && user? <img className="w-[35px] h-[35px] rounded-full mr-4" src={user?.photoURL} title={user.displayName} alt="" /> : ""
+          }
+          {
+            user && user? <NavLink onClick={handleLogOut} className={({ isActive }) =>
+            isActive
+              ? "text-[#EF7B84] dark:text-white hover:underline cursor-pointer font-semibold"
+              : "text-gray-900 dark:text-white hover:underline cursor-pointer font-semibold"
+          }>Logout</NavLink> : <NavLink to='/login' className={({ isActive }) =>
+          isActive
+            ? "text-[#EF7B84] dark:text-white hover:underline cursor-pointer font-semibold"
+            : "text-gray-900 dark:text-white hover:underline cursor-pointer font-semibold"
+        }>Login</NavLink>
+          }
+        
         </div>
     </div>
 </nav>
