@@ -4,6 +4,18 @@ import Lottie from 'lottie-react'
 import { Link } from "react-router-dom";
 
 const Register = () => {
+
+    const handleRegister = event => {
+        event.preventDefault()
+    
+        const form = event.target;
+        const name = form.name.value;
+        const photo = form.photo.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const user = {name, photo, email, password};
+        console.log(user);
+      }
     return (
         <div>
       <div className="hero min-h-screen">
@@ -17,7 +29,7 @@ const Register = () => {
             <div>
               <h2 className="text-center py-6 font-bold text-2xl">Welcome to <span className="text-[#EF7B84]">Toy-Verse</span></h2>
             </div>
-            <div className="card-body">
+            <form onSubmit={handleRegister} className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Name</span>
@@ -72,7 +84,7 @@ const Register = () => {
               </div>
             
                 <p className="text-center mb-4"><small>Already Have An Account? <Link className="text-[#EF7B84] font-semibold" to='/login'>Login</Link></small></p>
-            </div>
+            </form>
             </div>
           </div>
         </div>
