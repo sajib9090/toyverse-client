@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import loginAnimation from "../../assets/login.json"
 import { FaGoogle } from 'react-icons/fa';
 import Lottie from 'lottie-react'
@@ -7,7 +7,9 @@ import { AuthContext } from "../../providers/AuthProvider";
 
 const Login = () => {
 
-  const { googleLogin } = useContext(AuthContext)
+  const { googleLogin, loginWithEmail } = useContext(AuthContext)
+  const [success, setSuccess] = useState('')
+  const [error, setError] = useState('')
 
   const handleLogin = event => {
     event.preventDefault()
@@ -16,7 +18,20 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    
+    loginWithEmail(email, password)
+    .then((userCredential) => { 
+      const user = userCredential.user;
+      console.log(user);
+      form.reset();
+      setError('')
+      
+    })
+    .catch((error) => {
+      const errorMessage = error.message;
+      console.log(errorMessage);
+      setError(error.message)
+    });
+
   }
 
   const handleGoogleLogin = () => {
@@ -27,6 +42,7 @@ const Login = () => {
     }).catch((error) => {
       const errorMessage = error.message;
       console.log(errorMessage);
+      
     });
   }
   return (
@@ -50,6 +66,7 @@ const Login = () => {
                 <input
                   type="email"
                   name="email"
+                  required
                   placeholder="Enter your email"
                   className="input input-bordered"
                 />
@@ -61,12 +78,18 @@ const Login = () => {
                 <input
                   type="password"
                   name="password"
+                  required
                   placeholder="Enter your password"
                   className="input input-bordered"
                 />
                 <label className="label">
                   <p className="label-text-alt link link-hover text-red-700">
                     Forgot password?
+                  </p>
+                </label>
+                <label className="label">
+                <p className="label-text-alt text-red-500">
+                    {error}
                   </p>
                 </label>
               </div>

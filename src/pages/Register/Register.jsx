@@ -3,6 +3,7 @@ import welcomeAnimation from "../../assets/welcome.json"
 import Lottie from 'lottie-react'
 import { Link } from "react-router-dom";
 import { AuthContext } from '../../providers/AuthProvider';
+import { updateProfile } from 'firebase/auth';
 
 const Register = () => {
 
@@ -21,11 +22,27 @@ const Register = () => {
         .then((userCredential) => {
             const user = userCredential.user;
             console.log(user);
+            form.reset()
+            updateUserProfile(user, name, photo)
+           
           })
           .catch((error) => {
             const errorMessage = error.message;
             console.log(errorMessage);
           });
+      }
+
+      const updateUserProfile = (user, name, photo) => {
+        updateProfile(user, {
+          displayName: name,
+          photoURL: photo
+        })
+        .then(() => {
+          console.log('updated');
+        })
+        .catch(error => {
+          console.log(error);
+        })
       }
     return (
         <div>
@@ -48,6 +65,7 @@ const Register = () => {
                 <input
                   type="text"
                   name="name"
+                  required
                   placeholder="Enter your name"
                   className="input input-bordered"
                 />
@@ -70,6 +88,7 @@ const Register = () => {
                 <input
                   type="email"
                   name="email"
+                  required
                   placeholder="Enter your email"
                   className="input input-bordered"
                 />
@@ -81,6 +100,7 @@ const Register = () => {
                 <input
                   type="password"
                   name="password"
+                  required
                   placeholder="Enter your password"
                   className="input input-bordered"
                 />
