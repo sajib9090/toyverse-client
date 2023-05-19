@@ -56,12 +56,12 @@ const Login = () => {
     <div>
       <div className="hero min-h-screen">
         <div className="hero-content flex-col lg:flex-row">
-          <div className="text-center w-[50%]">
+          <div className="text-center md:w-[50%]">
            <div>
             <Lottie animationData={loginAnimation} loop={true}></Lottie>
            </div>
           </div>
-          <div className="card flex-shrink-0 w-[50%] max-w-sm shadow-2xl bg-base-100">
+          <div className="card flex-shrink-0 md:w-[50%] max-w-sm shadow-2xl bg-base-100">
             <div>
               <h2 className="text-center py-6 font-bold text-2xl">Login into <span className="text-[#EF7B84]">Toy-Verse</span></h2>
             </div>
