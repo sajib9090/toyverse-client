@@ -33,7 +33,18 @@ const AddAToy = () => {
             toast.error('Quantity should be positive value')
             return
         }
-        console.log(productInformation);
+        
+        fetch("http://localhost:5000/toys", {
+            method: "Post",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(productInformation)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+        })
 
     }
   return (
@@ -120,7 +131,7 @@ const AddAToy = () => {
                   name="sellerName"
                   id=""
                   placeholder="Seller Name"
-                  defaultValue={user.displayName}
+                  defaultValue={user?.displayName}
                   required
                 />
               </div>
@@ -138,7 +149,7 @@ const AddAToy = () => {
                   name="sellerEmail"
                   id=""
                   placeholder="Seller Email"
-                  defaultValue={user.email}
+                  defaultValue={user?.email}
                   required
                 />
               </div>
