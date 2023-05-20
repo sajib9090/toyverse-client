@@ -1,9 +1,12 @@
 import React from "react";
+import { FaArrowCircleRight } from 'react-icons/fa';
+import { Link } from "react-router-dom";
+
 
 const SingleToy = ({ toy }) => {
-  console.log(toy);
-
+  
   const { sellerName, name, category, price, quantity, _id, photo} = toy;
+
   return (
     <div className="">
       <div className="overflow-x-auto w-full">
@@ -21,7 +24,7 @@ const SingleToy = ({ toy }) => {
                     </div>
                   </div>
                   <div>
-                    <div className="font-bold">{name}</div>
+                  {name.length > 30 ? name.slice(0, 30) + '.....' : name}
                   </div>
                 </div>
               </td>
@@ -37,7 +40,7 @@ const SingleToy = ({ toy }) => {
               </td>
               <td><span>Available Quantity:</span>{quantity}pcs</td>
               <th>
-                <button className="btn btn-ghost btn-xs">details</button>
+            <Link to={`/toy_details/${_id}`}><button className="btn btn-ghost btn-xs bg-[#EF7B84] text-white">View Details <FaArrowCircleRight className="ml-2" /></button></Link>
               </th>
             </tr>
           </tbody>

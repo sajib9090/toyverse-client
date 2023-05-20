@@ -21,11 +21,12 @@ const AddAToy = () => {
         const photo = form.photo.value;
         const description = form.description.value;
         const productInformation = {name, price, rating, quantity, sellerName, sellerEmail, category, photo, description}
-        if(price < 0){
+        if(price < 0 || isNaN(price)){
             toast.error('Price should be positive value')
             return
         }
-        if(rating < 0){
+
+        if(rating < 0 || isNaN(rating)){
             toast.error('Rating should be positive value')
             return
         }
@@ -44,6 +45,7 @@ const AddAToy = () => {
         .then(res => res.json())
         .then(data => {
             console.log(data);
+            toast.success('Added successfully.')
         })
 
     }
@@ -80,7 +82,7 @@ const AddAToy = () => {
                 <br />
                 <input
                   className="w-[100%] mt-3 mb-2 input input-bordered"
-                  type="number"
+                  type="text"
                   name="price"
                   id=""
                   placeholder="Price"
@@ -94,7 +96,7 @@ const AddAToy = () => {
                 <br />
                 <input
                   className="w-[100%] mt-3 mb-2 input input-bordered"
-                  type="number"
+                  type="text"
                   name="rating"
                   id=""
                   placeholder="Rating"
