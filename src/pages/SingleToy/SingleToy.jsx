@@ -1,11 +1,15 @@
 import React from "react";
+import { Toaster, toast } from "react-hot-toast";
 import { FaEdit, FaSkullCrossbones } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 
-const SingleToy = ({ toy, index }) => {
+
+const SingleToy = ({ toy, index, handleDelete }) => {
   
   const { sellerName, name, category, price, quantity, _id, photo } = toy;
+
+  
 
   return (
     <div className="mb-4">
@@ -34,7 +38,7 @@ const SingleToy = ({ toy, index }) => {
               <td className="bg-[#d7f1fa]">
                 <div className="flex flex-col">
                 <button title="Edit" className="my-4"><FaEdit className="h-6 w-6"/></button>
-                <button title="Delete" className="my-4"><FaSkullCrossbones className="h-6 w-6" /></button>
+                <button onClick={()=> handleDelete(_id)} title="Delete" className="my-4"><FaSkullCrossbones className="h-6 w-6" /></button>
                 </div>
                 </td>
               <td className="bg-[#d7f1fa]">
@@ -47,6 +51,7 @@ const SingleToy = ({ toy, index }) => {
           </tbody>
         </table>
       </div>
+      <Toaster/>
     </div>
   );
 };

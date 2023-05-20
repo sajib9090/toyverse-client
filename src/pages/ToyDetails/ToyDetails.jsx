@@ -14,7 +14,7 @@ const ToyDetails = () => {
             <div className="photo-main">
               <img
               className="object-contain h-[400px]"
-                src={details.photo}
+                src={photo}
               />
             </div>
           </div>
