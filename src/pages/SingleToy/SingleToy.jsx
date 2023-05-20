@@ -9,8 +9,6 @@ const SingleToy = ({ toy, index, handleDelete }) => {
   
   const { sellerName, name, category, price, quantity, _id, photo } = toy;
 
-  
-
   return (
     <div className="mb-4">
       <div className="overflow-x-auto">
@@ -37,7 +35,7 @@ const SingleToy = ({ toy, index, handleDelete }) => {
               <td className="bg-[#d7f1fa]">{quantity} pcs</td>
               <td className="bg-[#d7f1fa]">
                 <div className="flex flex-col">
-                <button title="Edit" className="my-4"><FaEdit className="h-6 w-6"/></button>
+                <Link to={`/update/${_id}`}><button title="Edit" className="my-4"><FaEdit className="h-6 w-6"/></button></Link>
                 <button onClick={()=> handleDelete(_id)} title="Delete" className="my-4"><FaSkullCrossbones className="h-6 w-6" /></button>
                 </div>
                 </td>

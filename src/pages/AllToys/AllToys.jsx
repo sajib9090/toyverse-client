@@ -38,6 +38,8 @@ const AllToys = () => {
     });
   };
 // console.log(allToys);
+
+
   return (
     <div>
       <div className="text-center py-10 ">
