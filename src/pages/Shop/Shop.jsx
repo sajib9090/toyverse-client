@@ -9,7 +9,7 @@ const Shop = () => {
 
   useEffect(() => {
     if (tab !== "") {
-      fetch(`http://localhost:5000/toys/${tab}`)
+      fetch(`http://localhost:5000/category/${tab}`)
         .then((res) => res.json())
         .then((data) => {
           setCategory(data);

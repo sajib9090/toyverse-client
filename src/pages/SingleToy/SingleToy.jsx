@@ -1,47 +1,48 @@
 import React from "react";
-import { FaArrowCircleRight } from 'react-icons/fa';
+import { FaEdit, FaSkullCrossbones } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 
-const SingleToy = ({ toy }) => {
+const SingleToy = ({ toy, index }) => {
   
-  const { sellerName, name, category, price, quantity, _id, photo} = toy;
+  const { sellerName, name, category, price, quantity, _id, photo } = toy;
 
   return (
-    <div className="">
-      <div className="overflow-x-auto w-full">
-        <table className="table w-full">
+    <div className="mb-4">
+      <div className="overflow-x-auto">
+        <table className="table table-compact w-full">
+          <thead>
+            <tr>
+              <th className=""></th>
+              <th className="capitalize">Seller Name</th>
+              <th className="capitalize">Toy Name</th>
+              <th className="capitalize">Sub-category</th>
+              <th className="capitalize">Price</th>
+              <th className="capitalize">Available Quantity</th>
+              <th className="capitalize"></th>
+              <th className="capitalize"></th>
+            </tr>
+          </thead>
           <tbody>
             <tr>
-              <td>
-                <div className="flex items-center space-x-3">
-                  <div className="avatar">
-                    <div className="mask mask-squircle w-12 h-24">
-                      <img
-                        src={photo}
-                        alt="Avatar Tailwind CSS Component"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                  {name?.length > 30 ? name?.slice(0, 30) + '.....' : name}
-                  </div>
+              <th className="bg-[#d7f1fa]">{index + 1}</th>
+              <td className="bg-[#d7f1fa]">{sellerName}</td>
+              <td className="bg-[#d7f1fa]">{name.length > 10? name.slice(0, 10) + "..": name}</td>
+              <td className="bg-[#d7f1fa]">{category}</td>
+              <td className="bg-[#d7f1fa]">$ {price}</td>
+              <td className="bg-[#d7f1fa]">{quantity} pcs</td>
+              <td className="bg-[#d7f1fa]">
+                <div className="flex flex-col">
+                <button title="Edit" className="my-4"><FaEdit className="h-6 w-6"/></button>
+                <button title="Delete" className="my-4"><FaSkullCrossbones className="h-6 w-6" /></button>
                 </div>
-              </td>
-              <td>
-                <p className="font-bold"><span className="mr-2 text-[#6e6e6e]">Category: </span>
-                {category}</p>
-                <br />
-                <span className="badge badge-ghost badge-sm flex flex-col">
-                    <p className="py-2">Price: $ {price}</p>
-                  
-                  <p>Seller Name: {sellerName}</p>
-                </span>
-              </td>
-              <td><span>Available Quantity:</span>{quantity}pcs</td>
-              <th>
-            <Link to={`/toy_Details/${_id}`}><button className="btn btn-ghost btn-xs bg-[#EF7B84] text-white">View Details <FaArrowCircleRight className="ml-2" /></button></Link>
-              </th>
+                </td>
+              <td className="bg-[#d7f1fa]">
+                <div className="flex flex-col">
+               <Link to={`/toy_Details/${_id}`}><button className="font-bold">View Details</button></Link>
+                </div>
+                </td>
+              
             </tr>
           </tbody>
         </table>
