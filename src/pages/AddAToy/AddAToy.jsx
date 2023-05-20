@@ -6,7 +6,7 @@ const AddAToy = () => {
 
     const { user } = useContext(AuthContext);
 
-    console.log(user.displayName);
+    // console.log(user.displayName);
 
     const handleAdd =(event)=> {
         event.preventDefault()

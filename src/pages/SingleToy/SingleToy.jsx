@@ -24,7 +24,7 @@ const SingleToy = ({ toy }) => {
                     </div>
                   </div>
                   <div>
-                  {name.length > 30 ? name.slice(0, 30) + '.....' : name}
+                  {name?.length > 30 ? name?.slice(0, 30) + '.....' : name}
                   </div>
                 </div>
               </td>
@@ -40,7 +40,7 @@ const SingleToy = ({ toy }) => {
               </td>
               <td><span>Available Quantity:</span>{quantity}pcs</td>
               <th>
-            <Link to={`/toy_details/${_id}`}><button className="btn btn-ghost btn-xs bg-[#EF7B84] text-white">View Details <FaArrowCircleRight className="ml-2" /></button></Link>
+            <Link to={`/toy_Details/${_id}`}><button className="btn btn-ghost btn-xs bg-[#EF7B84] text-white">View Details <FaArrowCircleRight className="ml-2" /></button></Link>
               </th>
             </tr>
           </tbody>
