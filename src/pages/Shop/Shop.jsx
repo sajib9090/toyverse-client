@@ -25,9 +25,9 @@ const Shop = () => {
     setTab(subCategory);
   };
 
-  console.log(category);
+  // console.log(category);
   return (
-    <div>
+    <div className="mb-16">
       <h1 className="text-center text-4xl font-bold py-6">Toys By Category</h1>
       <Tabs>
         <div className="text-center">

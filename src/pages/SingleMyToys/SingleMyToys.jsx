@@ -1,14 +1,21 @@
 import React from "react";
-import { Toaster, toast } from "react-hot-toast";
-import { FaEdit, FaSkullCrossbones } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { FaEdit, FaSkullCrossbones } from "react-icons/fa";
+import { Toaster } from "react-hot-toast";
 
-
-
-const SingleToy = ({ toy, index }) => {
-  
-  const { sellerName, name, category, price, quantity, _id } = toy;
-
+const SingleMyToys = ({ my, index, handleDelete, handleUpdate }) => {
+  const {
+    photo,
+    name,
+    sellerName,
+    sellerEmail,
+    _id,
+    price,
+    rating,
+    quantity,
+    description,
+    category
+  } = my;
   return (
     <div className="mb-4">
       <div className="overflow-x-auto">
@@ -34,6 +41,10 @@ const SingleToy = ({ toy, index }) => {
               <td className="bg-[#d7f1fa]">$ {price}</td>
               <td className="bg-[#d7f1fa]">{quantity} pcs</td>
               <td className="bg-[#d7f1fa]">
+                <div className="flex flex-col">
+                <Link to={`/update/${_id}`}><button title="Edit" className="my-4"><FaEdit className="h-6 w-6"/></button></Link>
+                <button onClick={()=> handleDelete(_id)}  title="Delete" className="my-4"><FaSkullCrossbones className="h-6 w-6" /></button>
+                </div>
                 </td>
               <td className="bg-[#d7f1fa]">
                 <div className="flex flex-col">
@@ -50,4 +61,4 @@ const SingleToy = ({ toy, index }) => {
   );
 };
 
-export default SingleToy;
+export default SingleMyToys;
