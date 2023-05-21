@@ -3,50 +3,29 @@ import { Toaster, toast } from "react-hot-toast";
 import { FaEdit, FaSkullCrossbones } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-
-
 const SingleToy = ({ toy, index }) => {
-  
   const { sellerName, name, category, price, quantity, _id } = toy;
 
   return (
-    <div className="mb-4">
-      <div className="overflow-x-auto">
-        <table className="table table-compact w-full">
-          <thead>
-            <tr>
-              <th className=""></th>
-              <th className="capitalize">Seller Name</th>
-              <th className="capitalize">Toy Name</th>
-              <th className="capitalize">Sub-category</th>
-              <th className="capitalize">Price</th>
-              <th className="capitalize">Available Quantity</th>
-              <th className="capitalize"></th>
-              <th className="capitalize"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th className="bg-[#d7f1fa]">{index + 1}</th>
-              <td className="bg-[#d7f1fa]">{sellerName}</td>
-              <td className="bg-[#d7f1fa]">{name.length > 10? name.slice(0, 10) + "..": name}</td>
-              <td className="bg-[#d7f1fa]">{category}</td>
-              <td className="bg-[#d7f1fa]">$ {price}</td>
-              <td className="bg-[#d7f1fa]">{quantity} pcs</td>
-              <td className="bg-[#d7f1fa]">
-                </td>
-              <td className="bg-[#d7f1fa]">
-                <div className="flex flex-col">
-               <Link to={`/toy_Details/${_id}`}><button className="font-bold">View Details</button></Link>
-                </div>
-                </td>
-              
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <Toaster/>
-    </div>
+    <tr className="">
+      <th className="bg-[#d7f1fa] py-10">{index + 1}</th>
+      <td className="bg-[#d7f1fa] py-10">{sellerName}</td>
+      <td className="bg-[#d7f1fa] py-10">
+        {name.length > 10 ? name.slice(0, 10) + ".." : name}
+      </td>
+      <td className="bg-[#d7f1fa] py-10">{category}</td>
+      <td className="bg-[#d7f1fa] py-10">$ {price}</td>
+      <td className="bg-[#d7f1fa] py-10">{quantity} pcs</td>
+      <td className="bg-[#d7f1fa] py-10"></td>
+      <td className="bg-[#d7f1fa] py-10">
+        <div className="flex flex-col">
+          <Link to={`/toy_Details/${_id}`}>
+            <button className="font-bold">View Details</button>
+          </Link>
+        </div>
+      </td>
+      <Toaster />
+    </tr>
   );
 };
 
