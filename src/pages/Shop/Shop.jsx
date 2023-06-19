@@ -2,14 +2,20 @@ import React, { useEffect, useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import Toys from "../Toys/Toys";
+import Aos from "aos";
+import 'aos/dist/aos.css'
 
 const Shop = () => {
   const [category, setCategory] = useState([]);
   const [tab, setTab] = useState("baby_dolls");
 
+  useEffect(()=> {
+    Aos.init(2000)
+  },[])
+
   useEffect(() => {
     if (tab !== "") {
-      fetch(`http://localhost:5000/category/${tab}`)
+      fetch(`https://toyverse-server-folisonjayson-gmailcom.vercel.app/category/${tab}`)
         .then((res) => res.json())
         .then((data) => {
           setCategory(data);
@@ -27,7 +33,7 @@ const Shop = () => {
 
   // console.log(category);
   return (
-    <div className="mb-16">
+    <div className="my-28" data-aos = "fade-right">
       <h1 className="text-center text-4xl font-bold py-6">Toys By Category</h1>
       <Tabs>
         <div className="text-center">
@@ -49,7 +55,7 @@ const Shop = () => {
         <TabPanel></TabPanel>
       </Tabs>
 
-      <div className="grid grid-cols-3 gap-6 mt-10">
+      <div className="grid md:grid-cols-3 gap-6 mt-10" data-aos = "fade-right">
         {category?.map((c) => (
           <Toys key={c._id} c={c} />
         ))}

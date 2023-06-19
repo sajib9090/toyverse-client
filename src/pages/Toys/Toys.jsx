@@ -12,15 +12,17 @@ const Toys = ({ c }) => {
           <img
             src={photo}
             alt="Shoes"
-            className="rounded-xl"
+            className="rounded-xl h-[250px]"
           />
         </figure>
         <div className="card-body items-center text-center">
           <h2 className="card-title">{name.length > 30 ? name.slice(0, 30) + "...." : name}</h2>
-          <p>price: {price}</p>
-          <p>rating: {rating}</p>
+          <p>Price: ${price}</p>
+          <p>Rating: {rating}</p>
           <div className="card-actions">
-            <Link to={`toy_Details/${_id}`}><button className="btn btn-primary">View Details</button></Link>
+            <Link to={`toy_Details/${_id}`}><button className="bg-[#EF7B84]
+py-1 px-4 rounded-md text-white
+hover:bg-[#68B5D2]">View Details</button></Link>
           </div>
         </div>
       </div>

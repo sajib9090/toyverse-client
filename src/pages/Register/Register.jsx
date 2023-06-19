@@ -1,16 +1,22 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import welcomeAnimation from "../../assets/welcome.json"
 import Lottie from 'lottie-react'
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from '../../providers/AuthProvider';
 import { updateProfile } from 'firebase/auth';
 import { Toaster, toast } from 'react-hot-toast';
+import Aos from "aos";
+import 'aos/dist/aos.css'
 
 const Register = () => {
 
     const { registerUser } = useContext(AuthContext)
     const navigate = useNavigate()
     const [error, setError] = useState('')
+
+    useEffect(()=> {
+      Aos.init(2000)
+    },[])
 
     const handleRegister = event => {
         event.preventDefault()
@@ -53,7 +59,7 @@ const Register = () => {
         })
       }
     return (
-        <div>
+        <div data-aos = "fade-right">
       <div className="hero min-h-screen">
         <div className="hero-content flex-col lg:flex-row">
           <div className="text-center w-[50%]">

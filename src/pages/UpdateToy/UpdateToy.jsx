@@ -32,7 +32,7 @@ const UpdateToy = () => {
             toast.error('Quantity should be positive value')
             return
         }
-        fetch(`http://localhost:5000/toys/${data._id}`, {
+        fetch(`https://toyverse-server-folisonjayson-gmailcom.vercel.app/toys/${data._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -155,7 +155,7 @@ const UpdateToy = () => {
                   name="sellerEmail"
                   id=""
                   placeholder="Seller Email"
-                  defaultValue={data?.sellerEmail}
+                  value={data?.sellerEmail}
                   required
                 />
               </div>
@@ -194,11 +194,12 @@ const UpdateToy = () => {
             </label>
             <br />
             <textarea
-            cols="50"
+              rows='10'
               className="w-[100%] mt-3 mb-2 input input-bordered"
               type="text"
               name="description"
               id=""
+              style={{ height: '100px' }}
               defaultValue={data?.description}
               placeholder="Describe about your product"
               required

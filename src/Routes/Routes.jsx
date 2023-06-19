@@ -9,9 +9,10 @@ import AddAToy from '../pages/AddAToy/AddAToy';
 import Blogs from '../pages/Blogs/Blogs';
 import Register from '../pages/Register/Register';
 import PrivateRoutes from './PrivateRoutes';
-import ToyDetails from '../pages/toyDetails/toyDetails';
+
 import Home from '../pages/Home/Home/Home';
 import UpdateToy from '../pages/UpdateToy/UpdateToy';
+import ToyDetails from '../pages/ToyDetails/ToyDetails';
 
 const router = createBrowserRouter([
     {
@@ -34,17 +35,17 @@ const router = createBrowserRouter([
           {
             path: "/all-toys",
             element: <AllToys/>,
-            loader: () => fetch(`http://localhost:5000/toys`),
+            loader: () => fetch(`https://toyverse-server-folisonjayson-gmailcom.vercel.app/toys`),
           },
           {
             path: "/toy_Details/:id",
             element: <PrivateRoutes><ToyDetails/></PrivateRoutes>,
-            loader: ({params}) => fetch(`http://localhost:5000/toys/${params.id}`),
+            loader: ({params}) => fetch(`https://toyverse-server-folisonjayson-gmailcom.vercel.app/toys/${params.id}`),
           },
           {
             path: "/update/:id",
             element: <PrivateRoutes><UpdateToy/></PrivateRoutes>,
-            loader: ({params}) => fetch(`http://localhost:5000/toys/${params.id}`),
+            loader: ({params}) => fetch(`https://toyverse-server-folisonjayson-gmailcom.vercel.app/toys/${params.id}`),
           },
           {
             path: "/my-toys",

@@ -1,15 +1,22 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import loginAnimation from "../../assets/login.json"
 import { FaGoogle } from 'react-icons/fa';
 import Lottie from 'lottie-react'
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import Aos from "aos";
+import 'aos/dist/aos.css'
 
 const Login = () => {
 
   const { googleLogin, loginWithEmail } = useContext(AuthContext)
   // const [success, setSuccess] = useState('')
   const [error, setError] = useState('')
+
+
+  useEffect(()=> {
+    Aos.init(2000)
+  },[])
 
   const location = useLocation()
   const navigate = useNavigate()
@@ -53,7 +60,7 @@ const Login = () => {
     });
   }
   return (
-    <div>
+    <div data-aos = "fade-right">
       <div className="hero min-h-screen">
         <div className="hero-content flex-col lg:flex-row">
           <div className="text-center md:w-[50%]">

@@ -1,18 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
+import Aos from "aos";
+import 'aos/dist/aos.css'
 
 const Banner = () => {
+  useEffect(()=> {
+    Aos.init(2000)
+  },[])
   return (
     <div className="mt-8">
-      <div className="carousel w-full">
+      <div className="carousel w-full data" data-aos = "fade-right">
         <div id="slide1" className="carousel-item relative w-full h-[600px]">
           <img
             src="https://i.ibb.co/ncKKs53/photo-1577368089740-7bbf4e2d9b63-ixlib-rb-4-0.jpg"
             className="w-full"
           />
-          <div className="absolute flex items-center h-full">
+          <div className="absolute flex items-center h-full px-4">
             <div className="ml-8 text-right">
-                <h1 className="text-5xl font-bold max-w-lg text-white mb-7">Toy-Verse Creates Memories That Last!</h1>
-                <p className="text-white text-lg max-w-lg mb-7">Bringing Imagination to Life, Toy-Verse: Where Magic Unfolds!</p>
+                <h1 className="text-3xl md:text-5xl font-bold max-w-lg text-white mb-7">Toy-Verse Creates Memories That Last!</h1>
+                <p className="text-white text-base md:text-lg max-w-lg mb-7">Bringing Imagination to Life, Toy-Verse: Where Magic Unfolds!</p>
                 <div>
                     <button className="btn bg-[#EF7B84] hover:bg-[#68B5D2] duration-500 outline-none border-none">View Collection</button>
                 </div>
@@ -32,10 +37,10 @@ const Banner = () => {
             src="https://i.ibb.co/GkTnMQq/photo-1512839112604-a05d02098d9e-ixlib-rb-4-0.jpg"
             className="w-full"
           />
-          <div className="absolute flex items-center h-full">
+          <div className="absolute flex items-center h-full px-4">
             <div className="ml-8 text-right">
-                <h1 className="text-5xl font-bold max-w-lg text-white mb-7">Unlock the Portal to Imagination.</h1>
-                <p className="text-white text-lg max-w-lg mb-7">Where Fantasy and Reality Collide in a Magical Symphony of Toys!</p>
+                <h1 className="text-3xl md:text-5xl font-bold max-w-lg text-white mb-7">Unlock the Portal to Imagination.</h1>
+                <p className="text-white text-base md:text-lg max-w-lg mb-7">Where Fantasy and Reality Collide in a Magical Symphony of Toys!</p>
                 <div>
                     <button className="btn bg-[#EF7B84] hover:bg-[#68B5D2] duration-500 outline-none border-none">View Collection</button>
                 </div>
@@ -55,10 +60,10 @@ const Banner = () => {
             src="https://i.ibb.co/v4K01Mw/photo-1580923368248-877f237696cd-ixlib-rb-4-0.jpg"
             className="w-full"
           />
-        <div className="absolute flex items-center h-full">
+        <div className="absolute flex items-center h-full px-4">
             <div className="ml-8 text-right">
-                <h1 className="text-5xl font-bold max-w-lg text-white mb-7">Color Your World with Toy-Verse</h1>
-                <p className="text-white text-lg max-w-lg mb-7">Where Fantasy and Reality Collide in a Magical Symphony of Toys!</p>
+                <h1 className="text-3xl md:text-5xl font-bold max-w-lg text-white mb-7">Color Your World with Toy-Verse</h1>
+                <p className="text-white text-base mdtext-lg max-w-lg mb-7">Where Fantasy and Reality Collide in a Magical Symphony of Toys!</p>
                 <div>
                     <button className="btn bg-[#EF7B84] hover:bg-[#68B5D2] duration-500 outline-none border-none">View Collection</button>
                 </div>

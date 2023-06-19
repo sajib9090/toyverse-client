@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import SingleToy from "../SingleToy/SingleToy";
 import Swal from "sweetalert2";
+import Aos from "aos";
+import 'aos/dist/aos.css'
 
 const AllToys = () => {
   const toys = useLoaderData();
 
   const [allToys, setAllToys] = useState(toys);
   const [searchText, setSearchText] = useState("");
+  useEffect(()=> {
+    Aos.init(2000)
+  },[])
 
   const handleDelete = (_id) => {
     Swal.fire({
@@ -20,7 +25,7 @@ const AllToys = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/toys/${_id}`, {
+        fetch(`https://toyverse-server-folisonjayson-gmailcom.vercel.app/toys/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -36,7 +41,7 @@ const AllToys = () => {
   };
   
   const handleSearch = () => {
-    fetch(`http://localhost:5000/toySearchByName/${searchText}`)
+    fetch(`https://toyverse-server-folisonjayson-gmailcom.vercel.app/toySearchByName/${searchText}`)
      .then(res => res.json())
      .then(data => {
       console.log(data);
@@ -45,7 +50,7 @@ const AllToys = () => {
   }
 
   return (
-    <div>
+    <div data-aos = "fade-right">
       <div className="text-center py-10 ">
         <h2 className="text-[#68B5D2] text-3xl font-bold">
           All Toys Collections

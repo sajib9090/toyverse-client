@@ -20,8 +20,8 @@ const Navbar = () => {
             <Link to="/">
               <p className="flex items-center">
                 <img
-                  src="https://flowbite.com/docs/images/logo.svg"
-                  className="h-8 mr-3"
+                  src="https://i.ibb.co/ryrK6LR/4a98b572-a1a9-48a5-b657-af7ffd9a041c.png"
+                  className="h-12 mr-3"
                   alt="Toy-Verse"
                 />
                 <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">

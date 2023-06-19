@@ -1,12 +1,18 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Toaster, toast } from "react-hot-toast";
+import Aos from "aos";
+import 'aos/dist/aos.css'
 
 const AddAToy = () => {
 
     const { user } = useContext(AuthContext);
 
     // console.log(user.displayName);
+
+    useEffect(()=> {
+      Aos.init(2000)
+    },[])
 
     const handleAdd =(event)=> {
         event.preventDefault()
@@ -35,7 +41,7 @@ const AddAToy = () => {
             return
         }
         
-        fetch("http://localhost:5000/toys", {
+        fetch("https://toyverse-server-folisonjayson-gmailcom.vercel.app/toys", {
             method: "Post",
             headers: {
                 "content-type": "application/json"
@@ -50,7 +56,7 @@ const AddAToy = () => {
 
     }
   return (
-    <div className="my-6 bg-[#f7c9cd] py-12">
+    <div className="my-6 bg-[#f7c9cd] py-12" data-aos = "fade-right">
       <div className="w-[70%] bg-white mx-auto shadow-xl">
         <div className="py-10 px-4 ">
           <h2 className="text-4xl font-bold text-[#68B5D2]">Add A Toy.</h2>
@@ -189,7 +195,7 @@ const AddAToy = () => {
             </label>
             <br />
             <textarea
-            cols="50"
+            style={{ height: '100px' }}
               className="w-[100%] mt-3 mb-2 input input-bordered"
               type="text"
               name="description"
